@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parisian Doll Fashion</title>
+  <!-- Elegant fonts to evoke Parisian style -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto&display=swap" rel="stylesheet" />
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #fdf6f0;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffe6e6;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin: 0;
+      color: #ff66a3;
+    }
+    
+    header p {
+      font-size: 1rem;
+      color: #a83356;
+    }
+    
+    /* Doll Area */
+    #doll-area {
+      max-width: 800px;
+      margin: 20px auto;
+      text-align: center;
+    }
+    
+    #upload-section {
+      margin-bottom: 10px;
+    }
+    
+    #doll-container {
+      position: relative;
+      width: 300px;
+      height: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 2px solid #ffccd5;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    #doll-container img#base-doll {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    /* Clothing overlay styles */
+    .clothing-overlay {
+      position: absolute;
+      pointer-events: none; /* So clicks go through to underlying elements */
+    }
+    /* Positioning by category – adjust these values as needed */
+    .tops {
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 300px;
+    }
+    .bottoms {
+      top: 55%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 300px;
+    }
+    .footwear {
+      top: 85%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 300px;
+    }
+    .accessories {
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      max-width: 150px;
+    }
+    
+    /* Clothing Options Panel */
+    #clothing-options {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 10px;
+      background-color: #fff;
+      border: 2px solid #ffccd5;
+      border-radius: 8px;
+    }
+    
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    
+    .tab-button {
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      padding: 10px 20px;
+      cursor: pointer;
+      color: #ff66a3;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .tab-button.active {
+      border-bottom: 2px solid #ff66a3;
+    }
+    
+    .tab-content {
+      display: none;
+      text-align: center;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .clothing-item {
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    .clothing-item:hover {
+      transform: scale(1.05);
+    }
+    
+    .clothing-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border: 1px solid #ffccd5;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Parisian Doll Fashion</h1>
+    <p>Dress your doll in chic, Paris-inspired style!</p>
+  </header>
+  
+  <!-- Doll and Upload Section -->
+  <section id="doll-area">
+    <div id="upload-section">
+      <label for="doll-upload">Upload Your Doll Image:</label>
+      <input type="file" id="doll-upload" accept="image/*" />
+    </div>
+    <div id="doll-container">
+      <!-- The doll image – update "doll_placeholder.png" with your asset -->
+      <img src="doll_placeholder.png" alt="Your Doll" id="base-doll" />
+      <!-- Clothing overlays will be appended here -->
+    </div>
+  </section>
+  
+  <!-- Clothing Options -->
+  <section id="clothing-options">
+    <!-- Tabs for clothing categories -->
+    <div class="tabs">
+      <button class="tab-button active" data-tab="tops">Tops</button>
+      <button class="tab-button" data-tab="bottoms">Bottoms</button>
+      <button class="tab-button" data-tab="footwear">Footwear</button>
+      <button class="tab-button" data-tab="accessories">Accessories</button>
+    </div>
+    <!-- Tab Contents -->
+    <div class="tab-content active" id="tops">
+      <!-- Replace "top1.png" and "top1_thumb.png" with your clothing images -->
+      <div class="clothing-item" data-category="tops" data-src="top1.png">
+        <img src="top1_thumb.png" alt="Chic Top" />
+      </div>
+      <div class="clothing-item" data-category="tops" data-src="top2.png">
+        <img src="top2_thumb.png" alt="Elegant Blouse" />
+      </div>
+    </div>
+    <div class="tab-content" id="bottoms">
+      <div class="clothing-item" data-category="bottoms" data-src="bottom1.png">
+        <img src="bottom1_thumb.png" alt="Stylish Skirt" />
+      </div>
+      <div class="clothing-item" data-category="bottoms" data-src="bottom2.png">
+        <img src="bottom2_thumb.png" alt="Chic Trousers" />
+      </div>
+    </div>
+    <div class="tab-content" id="footwear">
+      <div class="clothing-item" data-category="footwear" data-src="shoes1.png">
+        <img src="shoes1_thumb.png" alt="Elegant Heels" />
+      </div>
+      <div class="clothing-item" data-category="footwear" data-src="shoes2.png">
+        <img src="shoes2_thumb.png" alt="Stylish Flats" />
+      </div>
+    </div>
+    <div class="tab-content" id="accessories">
+      <div class="clothing-item" data-category="accessories" data-src="accessory1.png">
+        <img src="accessory1_thumb.png" alt="Chic Hat" />
+      </div>
+      <div class="clothing-item" data-category="accessories" data-src="accessory2.png">
+        <img src="accessory2_thumb.png" alt="Elegant Scarf" />
+      </div>
+    </div>
+  </section>
+  
+  <!-- JavaScript -->
+  <script>
+    // Enable uploading a new doll image.
+    document.getElementById('doll-upload').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('base-doll').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+    
+    // Functionality: When a clothing item is clicked, overlay it on the doll.
+    document.querySelectorAll('.clothing-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const category = this.getAttribute('data-category');
+        const src = this.getAttribute('data-src');
+        // Check if an overlay for this category exists; if so, update its image.
+        const existingOverlay = document.querySelector('.clothing-overlay[data-category="' + category + '"]');
+        if (existingOverlay) {
+          existingOverlay.src = src;
+        } else {
+          const overlay = document.createElement('img');
+          overlay.src = src;
+          overlay.classList.add('clothing-overlay', category);
+          overlay.setAttribute('data-category', category);
+          overlay.alt = category;
+          document.getElementById('doll-container').appendChild(overlay);
+        }
+      });
+    });
+    
+    // Tab switching for different clothing categories.
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', function() {
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        const tabName = this.getAttribute('data-tab');
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.getElementById(tabName).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
